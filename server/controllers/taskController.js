@@ -19,8 +19,29 @@ export async function createTask(req, res) {
 
     const {title, description, isCompleted} = body;
     const savedTask = await Task.create({userId, title, description, isCompleted});
-    res.status(201).send(savedTask);
+    return res.status(201).send(savedTask);
   } catch (error) {
     return res.status(500).send({message: "Something went wrong."});
+  }
+}
+
+export async function deleteTask(req, res) {
+  try {
+    const userId = req.userId;
+    const taskId = req.params.id;
+
+    if (!taskId) return res.status(400).send({message: 'TaskId is required.'});
+
+    await Task.findOneAndDelete({
+      _id: taskId,
+      userId
+    }).then((task) => {
+      if (task) return res.status(200).send({message: 'Task deleted successfully.'});
+      else return res.status(404).send({message: 'Task does not exist.'});
+    }).catch(error => {
+      return res.status(400).send({message: 'Task does not exist.'});
+    });
+  } catch (error) {
+    res.status(500).send({message: 'Something went wrong.'});
   }
 }
