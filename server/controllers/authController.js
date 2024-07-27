@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 export async function signup(req, res) {
   const body = req.body;
-  if (!body.name || !body.email || !body.password) {
+  if (!body.name.trim() || !body.email.trim() || !body.password.trim()) {
     return res.status(400).send({message: 'Name, Email and password are required'});
   }
 
