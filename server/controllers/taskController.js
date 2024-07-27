@@ -25,12 +25,34 @@ export async function createTask(req, res) {
   }
 }
 
-export async function deleteTask(req, res) {
+export async function updateTask(req, res) {
   try {
     const userId = req.userId;
     const taskId = req.params.id;
 
-    if (!taskId) return res.status(400).send({message: 'TaskId is required.'});
+    const body = req.body;
+
+    const task = await Task.findOne({
+      _id: taskId,
+      userId
+    })
+
+    if (!task) return res.status(404).send({message: "Task not found"});
+
+    const updatedTask = await Task.findByIdAndUpdate(taskId, body, {new: true});
+
+    return updatedTask ?
+        res.status(201).send(updatedTask) :
+        res.status(400).send({message: 'Task update Failed.'});
+  } catch (error) {
+    return res.status(500).send({message: 'Something went wrong.'});
+  }
+}
+
+export async function deleteTask(req, res) {
+  try {
+    const userId = req.userId;
+    const taskId = req.params.id;
 
     await Task.findOneAndDelete({
       _id: taskId,
@@ -38,7 +60,7 @@ export async function deleteTask(req, res) {
     }).then((task) => {
       if (task) return res.status(200).send({message: 'Task deleted successfully.'});
       else return res.status(404).send({message: 'Task does not exist.'});
-    }).catch(error => {
+    }).catch(() => {
       return res.status(400).send({message: 'Task does not exist.'});
     });
   } catch (error) {
