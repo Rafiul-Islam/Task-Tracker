@@ -1,5 +1,5 @@
-const user = {email: '', password: ''};
+// const user = {email: '', password: ''};
 
-const useAuth = () => ({user : user})
+const useAuth = () => ({user : null})
 
 export default useAuth;
