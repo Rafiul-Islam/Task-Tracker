@@ -1,9 +1,10 @@
-import User from "../models/User.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { config } from "dotenv";
-import sendEmail from "../utils/send-email.js";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 import getUrl from "../utils/get-url.js";
+import sendEmail from "../utils/send-email.js";
+import { successResponse, failedResponse } from "../utils/response-obj.js";
 
 config();
 
@@ -29,9 +30,11 @@ export async function signup(req, res) {
       password: encryptedPassword,
     });
 
-    return res.status(201).send(savedUser);
+    const response = successResponse(savedUser, "Sign up successfully!");
+    return res.status(201).send(response);
   } catch (error) {
-    return res.status(500).send({ message: "Something went wrong." });
+    const response = failedResponse();
+    return res.status(500).send(response);
   }
 }
 
@@ -59,9 +62,15 @@ export async function login(req, res) {
       }
     );
 
-    return res.status(200).send({ token });
+    const response = successResponse(token, "Login successfully!");
+    response.data = {
+      expire: "1h",
+      token,
+    };
+    return res.status(200).send(response);
   } catch (error) {
-    return res.status(500).send({ message: "Something went wrong." });
+    const response = failedResponse();
+    return res.status(500).send(response);
   }
 }
 

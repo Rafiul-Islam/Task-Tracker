@@ -1,6 +1,8 @@
 import * as z from "zod";
 import {FieldValues, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import useLogin from "../hooks/useLogin.ts";
+import {useNavigate} from "react-router-dom";
 
 const schema = z.object({
   email: z
@@ -18,12 +20,14 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const {register, handleSubmit, formState: {errors}} = useForm<FormData>({
     resolver: zodResolver(schema)
   });
   
   const handleLogin = (data: FieldValues) => {
-    console.log(data);
+    const {email, password} = data;
+    useLogin({email, password}, navigate);
   }
   
   return (

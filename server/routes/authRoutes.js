@@ -1,9 +1,9 @@
 import express from "express";
 import {
-  login,
-  signup,
   generateForgotPasswordURL,
+  login,
   resetPassword,
+  signup,
   validateResetPasswordURL,
 } from "../controllers/authController.js";
 
