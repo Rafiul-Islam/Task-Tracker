@@ -12,10 +12,10 @@ const TaskList = () => {
   if (error) throw Error();
   return (
       <>
-        <h2>All Tasks</h2>
-        <div style={{textAlign: "right"}}>
+        <div style={{textAlign: "right", marginBottom: "10px"}}>
           <button onClick={() => navigate("/task/add")}>Add Task</button>
         </div>
+        <h2>All Tasks</h2>
         {data?.length === 0 && "No tasks found."}
         {data?.map((task) => <TaskItem key={task._id} task={task}/>)}
       </>
