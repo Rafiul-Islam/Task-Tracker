@@ -1,6 +1,6 @@
 import { NavigateFunction } from 'react-router-dom';
 
-export const navigateToSignup = (navigate: NavigateFunction) => {
+export const navigateToLogin = (navigate: NavigateFunction) => {
   navigate('/login');
 };
 

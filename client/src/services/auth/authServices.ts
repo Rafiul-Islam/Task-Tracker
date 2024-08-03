@@ -1,10 +1,10 @@
-import apiClient from "./apiClient.ts";
+import apiClient from "../apiClient.ts";
 import {toast} from "react-toastify";
-import User from "../types/User.ts";
-import Credential from "../types/Credential.ts";
-import Response from "../types/Response.ts";
+import User from "../../types/User.ts";
+import Credential from "../../types/Credential.ts";
+import Response from "../../types/Response.ts";
 import {NavigateFunction} from "react-router-dom";
-import {navigateToSignup, navigateToTasks} from "../utils/navigateTo.ts";
+import {navigateToLogin, navigateToTasks} from "../../utils/navigateTo.ts";
 import {Cookies} from "react-cookie";
 import ms from 'ms';
 
@@ -16,9 +16,7 @@ class AuthServices {
         .then(({data: res}) => {
           const expireTime = new Date(new Date().getTime() + ms(res.data.expire));
           cookies.set("auth_token", res.data.token, {path: '/', expires: expireTime});
-          setTimeout(() => {
-            navigateToTasks(navigate);
-          }, 1000);
+          navigateToTasks(navigate);
         })
         .catch(error => {
           console.log(error);
@@ -30,12 +28,22 @@ class AuthServices {
     apiClient.post<Response>('/api/auth/signup', user)
         .then(({data: res}) => {
           toast.success(res.message);
-          navigateToSignup(navigate);
+          navigateToLogin(navigate);
         })
         .catch(error => {
           console.log(error);
           toast.error(error.response.data.message);
         });
+  }
+  
+  logout = (navigate: NavigateFunction) => {
+    try {
+      cookies.remove("auth_token");
+      navigateToLogin(navigate);
+    } catch (error) {
+      toast.error("Unable to logout");
+      console.log(error);
+    }
   }
 }
 

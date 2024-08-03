@@ -1,5 +1,3 @@
-// const user = {email: '', password: ''};
-
 import {Cookies} from "react-cookie";
 import {jwtDecode} from "jwt-decode";
 

@@ -1,8 +1,8 @@
 import * as z from "zod";
 import {FieldValues, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useSignup from "../hooks/useSignup.ts";
 import {useNavigate} from "react-router-dom";
+import authServices from "../services/auth/authServices.ts";
 
 const schema = z.object({
   name: z
@@ -32,7 +32,7 @@ const SignUp = () => {
   
   const handleSignUp = (data: FieldValues) => {
     const {name, email, password} = data;
-    useSignup({name, email, password}, navigate);
+    authServices.signup({name, email, password}, navigate);
   }
   return (
       <form onSubmit={handleSubmit(handleSignUp)}>
