@@ -44,6 +44,8 @@ const LoginPage = () => {
         </div>
         <br/>
         <Link to="/signup">SignUp</Link>
+        <br/>
+        <Link to="/forgot-password">Forgot Password</Link>
       </form>
   );
 };

@@ -5,7 +5,7 @@ import logout from "./auth/logout.ts";
 const cookies = new Cookies();
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000"
+  baseURL: "http://localhost:5000/api"
 });
 
 axiosInstance.interceptors.request.use((config) => {
