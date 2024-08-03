@@ -10,9 +10,7 @@ const PrivateRoute = () => {
   const {setCurrentUser} = useAuthStore();
   
   useEffect(() => {
-    if (user) {
-      setCurrentUser(user);
-    }
+    if (user) setCurrentUser(user);
   }, []);
   
   if (!user) return <Navigate to="/login"/>;
