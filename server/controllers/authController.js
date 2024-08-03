@@ -91,9 +91,10 @@ export async function generateForgotPasswordURL(req, res) {
     const token = jwt.sign(payload, JWT_SECRET_FOR_FORGOT_PASSWORD, {
       expiresIn: "15m",
     });
-    const RESET_PASSWORD_URL = `${getUrl(req)}/api/auth/reset-password/${
-      user._id
-    }/${token}`;
+    // const RESET_PASSWORD_URL = `${getUrl(req)}/api/auth/reset-password/${
+    //   user._id
+    // }/${token}`;
+    const RESET_PASSWORD_URL = `${process.env.CLIENT_BASE_URL}/reset-password/${user._id}/${token}`;
 
     const sendTo = user.email;
     const mailSubject = "Email For Send Reset Password URL.";

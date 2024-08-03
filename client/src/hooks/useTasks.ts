@@ -4,7 +4,7 @@ import Task from "../types/Task.ts";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 
-const taskServices = createService<Task>("/api/tasks");
+const taskServices = createService<Task>("/tasks");
 
 export const useGetTaskById = (id: string) => {
   return useQuery<Task, Error>({

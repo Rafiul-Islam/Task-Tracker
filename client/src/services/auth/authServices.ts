@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 class AuthServices {
   login = (credential: Credential) => {
-    apiClient.post<Response>('/api/auth/login', credential)
+    apiClient.post<Response>('/auth/login', credential)
         .then(({data: res}) => {
           const expireTime = new Date(new Date().getTime() + ms(res.data.expire));
           cookies.set("auth_token", res.data.token, {path: '/', expires: expireTime});
@@ -26,7 +26,7 @@ class AuthServices {
   }
   
   signup = (user: User, navigate: NavigateFunction) => {
-    apiClient.post<Response>('/api/auth/signup', user)
+    apiClient.post<Response>('/auth/signup', user)
         .then(({data: res}) => {
           toast.success(res.message);
           navigateToLogin(navigate);
