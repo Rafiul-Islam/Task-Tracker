@@ -67,10 +67,7 @@ export async function deleteTask(req, res) {
       userId,
     })
       .then((task) => {
-        if (task)
-          return res
-            .status(200)
-            .send({ message: "Task deleted successfully." });
+        if (task) return res.status(200).send(task);
         else return res.status(404).send({ message: "Task does not exist." });
       })
       .catch(() => {

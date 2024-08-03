@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TaskItem = ({task}: Props) => {
-  const {_id: taskId, title, isComplete, description} = task;
+  const {_id: taskId, title, isCompleted, description} = task;
   const {deleteTask} = useTasks();
   const handleDelete = () => {
     deleteTask.mutate(taskId);
@@ -17,7 +17,7 @@ const TaskItem = ({task}: Props) => {
         <p>{taskId}</p>
         <p>{title}</p>
         <p>{description}</p>
-        <p>{isComplete ? 'Completed' : "Not Completed"}</p>
+        <p>{isCompleted ? 'Completed' : "Not Completed"}</p>
         <button style={{margin: "0 3px", cursor: 'pointer'}}>Update</button>
         <button style={{margin: "0 3px", cursor: 'pointer'}} onClick={handleDelete}>Delete</button>
       </div>

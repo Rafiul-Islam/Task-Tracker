@@ -1,8 +1,10 @@
 import useTasks from "../hooks/useTasks.ts";
 import Loader from "./Loader.tsx";
 import TaskItem from "./TaskItem.tsx";
+import {useNavigate} from "react-router-dom";
 
 const TaskList = () => {
+  const navigate = useNavigate();
   const {getAllTasks} = useTasks();
   const {data, isLoading, error} = getAllTasks;
   
@@ -11,6 +13,9 @@ const TaskList = () => {
   return (
       <>
         <h2>All Tasks</h2>
+        <div style={{textAlign: "right"}}>
+          <button onClick={() => navigate("/task/add")}>Add Task</button>
+        </div>
         {data?.length === 0 && "No tasks found."}
         {data?.map((task) => <TaskItem key={task._id} task={task}/>)}
       </>

@@ -6,6 +6,7 @@ import PublicRoute from "../components/PublicRoute.tsx";
 import ErrorPage from "../Pages/ErrorPage.tsx";
 import SignUp from "../Pages/SignUp.tsx";
 import ForgotPassword from "../Pages/ForgotPassword.tsx";
+import AddTask from "../components/AddTask.tsx";
 
 const routers = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const routers = createBrowserRouter([
       {
         path: "tasks",
         element: <TasksPage/>,
+      },
+      {
+        path: "task/add",
+        element: <AddTask/>,
       }
     ]
   }
