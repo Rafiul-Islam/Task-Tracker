@@ -1,5 +1,6 @@
 import axios from "axios";
 import {Cookies} from "react-cookie";
+import logout from "./auth/logout.ts";
 
 const cookies = new Cookies();
 
@@ -17,5 +18,15 @@ axiosInstance.interceptors.request.use((config) => {
   return Promise.reject(error);
 })
 
+// Add a response interceptor
+axiosInstance.interceptors.response.use(
+    response => response,
+    error => {
+      if (error.response && error.response.status === 401) {
+        logout() // for logout
+      }
+      return Promise.reject(error);
+    }
+);
 
 export default axiosInstance;

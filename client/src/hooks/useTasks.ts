@@ -6,6 +6,13 @@ import {useNavigate} from "react-router-dom";
 
 const taskServices = createService<Task>("/api/tasks");
 
+export const useGetTaskById = (id: string) => {
+  return useQuery<Task, Error>({
+    queryKey: ["task", id],
+    queryFn: () => taskServices.getOne(id),
+  });
+};
+
 const useTasks = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -29,20 +36,33 @@ const useTasks = () => {
     }
   });
   
+  const updateTask = useMutation<Task, Error, { taskId: string; task: Task }>({
+    mutationFn: ({taskId, task}) => taskServices.update(taskId, task),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["tasks"]
+      });
+      toast.success("Task updated successfully");
+      navigate("/tasks");
+    },
+    onError: () => {
+      toast.error("Failed to update the task");
+    }
+  });
+  
   const deleteTask = useMutation<void, Error, string>({
     mutationFn: (taskId: string) => taskServices.delete(taskId),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["tasks"]
       });
-      toast.success("Task deleted");
     },
     onError: () => {
       toast.error("Failed to delete the task");
     }
   });
   
-  return {getAllTasks, addTask, deleteTask};
+  return {getAllTasks, addTask, updateTask, deleteTask};
 };
 
 export default useTasks;

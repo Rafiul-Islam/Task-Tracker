@@ -10,6 +10,20 @@ export async function tasks(req, res) {
   }
 }
 
+export async function task(req, res) {
+  try {
+    const userId = req.userId;
+    const taskId = req.params.taskId;
+    const task = await Task.findOne({
+      _id: taskId,
+      userId,
+    });
+    res.status(200).json(task);
+  } catch (error) {
+    return res.status(500).send({ message: "Something went wrong." });
+  }
+}
+
 export async function createTask(req, res) {
   try {
     const userId = req.userId;

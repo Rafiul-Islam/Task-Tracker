@@ -7,12 +7,13 @@ import ErrorPage from "../Pages/ErrorPage.tsx";
 import SignUp from "../Pages/SignUp.tsx";
 import ForgotPassword from "../Pages/ForgotPassword.tsx";
 import AddTask from "../components/AddTask.tsx";
+import UpdateTask from "../components/UpdateTask.tsx";
 
 const routers = createBrowserRouter([
   {
     path: "/",
     element: <PublicRoute/>,
-    errorElement: <ErrorPage/>,
+    errorElement: <Navigate to="/login"/>,
     children: [
       {
         index: true,
@@ -48,6 +49,10 @@ const routers = createBrowserRouter([
       {
         path: "task/add",
         element: <AddTask/>,
+      },
+      {
+        path: "task/:taskId",
+        element: <UpdateTask/>,
       }
     ]
   }

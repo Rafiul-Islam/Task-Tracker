@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import apiClient from "./apiClient.ts";
+import {toast} from "react-toastify";
 
 class HttpService<T> {
   apiEndPoint = "";
@@ -40,6 +41,7 @@ class HttpService<T> {
     
     if (result.isConfirmed) {
       await apiClient.delete(`${this.apiEndPoint}/${id}`);
+      toast.success("Task deleted");
     }
   }
 }
