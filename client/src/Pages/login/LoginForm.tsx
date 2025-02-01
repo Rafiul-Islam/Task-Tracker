@@ -38,17 +38,17 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit(handleLogin)}>
                 <div className='mb-3'>
                     <input autoFocus type="email" placeholder="Email" {...register("email")} /> <br/>
-                    <span>{errors.email?.message && errors.email.message}</span>
+                    <small className='text-danger'>{errors.email?.message && errors.email.message}</small>
                 </div>
                 <div className='mb-3'>
                     <input type="password" placeholder="Password" {...register("password")} /> <br/>
-                    <span>{errors.password?.message && errors.password.message}</span>
+                    <small className='text-danger'>{errors.password?.message && errors.password.message}</small>
                 </div>
                 <div className='text-end'>
                     <Link className='text-decoration-none fst-italic text-secondary' to="/forgot-password">Forgot Password</Link>
                 </div>
                 <div>
-                    <button className='btn btn-primary' type='submit'>Submit</button>
+                    <button className='btn btn-primary' type='submit'>Sign In</button>
                 </div>
                 <div className='mt-4'>
                     <span>Don't have an account? </span>
