@@ -1,6 +1,6 @@
-import useTasks from "../hooks/useTasks.ts";
-import Loader from "./Loader.tsx";
-import TaskItem from "./TaskItem.tsx";
+import useTasks from "../../hooks/useTasks.ts";
+import Loader from "../../components/Loader.tsx";
+import TaskItem from "../../components/TaskItem.tsx";
 import {useNavigate} from "react-router-dom";
 
 const TaskList = () => {

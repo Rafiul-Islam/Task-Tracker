@@ -1,6 +1,6 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import LoginPage from "../Pages/login/LoginPage.tsx";
-import TasksPage from "../Pages/TasksPage.tsx";
+import TasksPage from "../Pages/tasks/TasksPage.tsx";
 import PrivateRoute from "../components/PrivateRoute.tsx";
 import PublicRoute from "../components/PublicRoute.tsx";
 import ErrorPage from "../Pages/ErrorPage.tsx";

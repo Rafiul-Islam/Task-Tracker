@@ -1,8 +1,8 @@
-import TaskList from "../components/TaskList.tsx";
+import TaskList from "./TaskList.tsx";
 
 const TasksPage = () => {
   return (
-      <div>
+      <div className="container">
         Tasks Page
         <TaskList/>
       </div>
