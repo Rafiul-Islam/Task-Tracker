@@ -10,7 +10,7 @@ const Layout = ({children}: Props) => {
   return (
       <>
         <Navbar/>
-        <main className='container py-5'>
+        <main className='container py-5' style={{minHeight: "75vh"}}>
           {children}
         </main>
         <Footer/>

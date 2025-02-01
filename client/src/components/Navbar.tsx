@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
 
-        <nav className="navbar text-white bg-success py-3">
+        <nav className="navbar text-white bg-success py-3 sticky-top">
             <div className="container d-flex justify-content-between">
                 <div className='d-flex align-items-center'>
                     <Link className="navbar-brand text-white fw-bold" to="/tasks">

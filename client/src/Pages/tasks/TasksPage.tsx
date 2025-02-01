@@ -2,10 +2,9 @@ import TaskList from "./TaskList.tsx";
 
 const TasksPage = () => {
   return (
-      <div>
-        Tasks Page
+      <section>
         <TaskList/>
-      </div>
+      </section>
   );
 };
 
