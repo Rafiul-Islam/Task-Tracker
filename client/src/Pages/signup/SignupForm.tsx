@@ -1,7 +1,7 @@
 import * as z from "zod";
 import {FieldValues, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import authServices from "../../services/auth/authServices.ts";
 
 const schema = z.object({
@@ -54,6 +54,13 @@ const SignUpForm = () => {
                     <small className='text-danger'>{errors.password?.message && errors.password.message}</small>
                 </div>
                 <button className='btn btn-primary' type='submit'>Sign Up</button>
+                <div className='mt-4'>
+                    <span>Already have an account?&nbsp;
+                        <Link className='text-decoration-none text-success' to='/login'>
+                            Log in
+                        </Link>
+                    </span>
+                </div>
             </form>
         </div>
     );

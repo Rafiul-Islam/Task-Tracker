@@ -5,7 +5,7 @@ import PrivateRoute from "../components/PrivateRoute.tsx";
 import PublicRoute from "../components/PublicRoute.tsx";
 import ErrorPage from "../Pages/ErrorPage.tsx";
 import SignUp from "../Pages/signup/SignUp.tsx";
-import ForgotPassword from "../Pages/ForgotPassword.tsx";
+import ForgotPassword from "../Pages/forgot-password/ForgotPassword.tsx";
 import AddTask from "../components/AddTask.tsx";
 import UpdateTask from "../components/UpdateTask.tsx";
 import ResetPassword from "../Pages/ResetPassword.tsx";

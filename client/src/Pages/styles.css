@@ -1,5 +1,6 @@
 .login-page,
-.signup-page {
+.signup-page ,
+.forgot-password-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +9,8 @@
 }
 
 .login-form-container,
-.signup-form-container {
+.signup-form-container ,
+.forgot-password-form-container {
     margin: 10px;
     width: 500px;
     padding: 60px;
