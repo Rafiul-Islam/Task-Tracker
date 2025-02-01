@@ -12,7 +12,8 @@
 .login-form-container,
 .signup-form-container ,
 .forgot-password-form-container ,
-.reset-password-form-container {
+.reset-password-form-container,
+.task-form-container{
     margin: 10px;
     width: 500px;
     padding: 60px;

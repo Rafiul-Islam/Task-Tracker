@@ -1,4 +1,5 @@
 import TaskList from "./TaskList.tsx";
+import '../styles.css';
 
 const TasksPage = () => {
   return (

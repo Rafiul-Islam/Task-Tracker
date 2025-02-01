@@ -21,7 +21,7 @@ button.btn {
     }
 }
 
-input {
+input, textarea {
     font-size: 1rem;
     padding: 10px 13px;
     border-radius: 3px;
@@ -29,6 +29,7 @@ input {
     width: 100%;
     display: block;
     box-sizing: border-box;
+    resize: none;
 
     &:focus {
         outline: none;
