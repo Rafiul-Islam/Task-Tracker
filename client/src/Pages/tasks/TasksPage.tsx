@@ -2,7 +2,7 @@ import TaskList from "./TaskList.tsx";
 
 const TasksPage = () => {
   return (
-      <div className="container">
+      <div>
         Tasks Page
         <TaskList/>
       </div>
