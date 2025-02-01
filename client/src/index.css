@@ -27,6 +27,7 @@ input {
     border-radius: 3px;
     border: 1px solid #ccc;
     width: 100%;
+    display: block;
     box-sizing: border-box;
 
     &:focus {

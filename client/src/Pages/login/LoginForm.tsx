@@ -32,20 +32,21 @@ const LoginForm = () => {
     return (
         <div className="login-form-container">
             <div className='mb-4'>
-                <h4 >Login</h4>
+                <h4>Login</h4>
                 <small className='text-muted'>Enter your email and password to login</small>
             </div>
             <form onSubmit={handleSubmit(handleLogin)}>
                 <div className='mb-3'>
-                    <input autoFocus type="email" placeholder="Email" {...register("email")} /> <br/>
+                    <input autoFocus type="email" placeholder="Email" {...register("email")} />
                     <small className='text-danger'>{errors.email?.message && errors.email.message}</small>
                 </div>
                 <div className='mb-3'>
-                    <input type="password" placeholder="Password" {...register("password")} /> <br/>
+                    <input type="password" placeholder="Password" {...register("password")} />
                     <small className='text-danger'>{errors.password?.message && errors.password.message}</small>
                 </div>
                 <div className='text-end'>
-                    <Link className='text-decoration-none fst-italic text-secondary' to="/forgot-password">Forgot Password</Link>
+                    <Link className='text-decoration-none fst-italic text-secondary' to="/forgot-password">Forgot
+                        Password</Link>
                 </div>
                 <div>
                     <button className='btn btn-primary' type='submit'>Sign In</button>

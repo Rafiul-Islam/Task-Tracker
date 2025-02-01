@@ -8,7 +8,7 @@ import SignUp from "../Pages/signup/SignUp.tsx";
 import ForgotPassword from "../Pages/forgot-password/ForgotPassword.tsx";
 import AddTask from "../components/AddTask.tsx";
 import UpdateTask from "../components/UpdateTask.tsx";
-import ResetPassword from "../Pages/ResetPassword.tsx";
+import ResetPassword from "../Pages/reset-password/ResetPassword.tsx";
 
 const routers = createBrowserRouter([
   {

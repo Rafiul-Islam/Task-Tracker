@@ -42,15 +42,15 @@ const SignUpForm = () => {
             </div>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div className='mb-3'>
-                    <input type="text" placeholder="Name" {...register("name")} /> <br/>
+                    <input type="text" placeholder="Name" {...register("name")} />
                     <small className='text-danger'>{errors.name?.message && errors.name.message}</small>
                 </div>
                 <div className='mb-3'>
-                    <input type="email" placeholder="Email" {...register("email")} /> <br/>
+                    <input type="email" placeholder="Email" {...register("email")} />
                     <small className='text-danger'>{errors.email?.message && errors.email.message}</small>
                 </div>
                 <div className='mb-3'>
-                    <input type="password" placeholder="Password" {...register("password")} /> <br/>
+                    <input type="password" placeholder="Password" {...register("password")} />
                     <small className='text-danger'>{errors.password?.message && errors.password.message}</small>
                 </div>
                 <button className='btn btn-primary' type='submit'>Sign Up</button>
